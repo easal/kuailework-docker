@@ -1,0 +1,21 @@
+#!/bin/bash
+java -server \
+-Xms2G \
+-Xmx2G \
+-Xmn256M \
+-Xss512K \
+-XX:PermSize=128M \
+-XX:MaxPermSize=128M \
+-XX:SurvivorRatio=8 \
+-XX:MaxTenuringThreshold=5 \
+-XX:GCTimeRatio=19 \
+-Xnoclassgc \
+-XX:+DisableExplicitGC \
+-XX:+UseParNewGC \
+-XX:+UseConcMarkSweepGC \
+-XX:+UseCMSCompactAtFullCollection \
+-XX:CMSFullGCsBeforeCompaction=0 \
+-XX:-CMSParallelRemarkEnabled \
+-XX:CMSInitiatingOccupancyFraction=70 \
+-XX:+UseFastAccessorMethods \
+-jar /opt/consumer-job-1.0-SNAPSHOT.jar > /opt/etl.log
